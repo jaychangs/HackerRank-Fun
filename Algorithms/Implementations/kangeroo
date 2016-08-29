@@ -1,0 +1,48 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+// https://www.hackerrank.com/challenges/kangaroo
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int x1 = in.nextInt();
+        int v1 = in.nextInt();
+        int x2 = in.nextInt();
+        int v2 = in.nextInt();
+        
+        int slowerKanV;
+        int slowerKanX;
+        int fasterKanX;
+        int fasterKanV;
+        
+        // Check for future incase x1 >= x2 :)
+        if (v1 > v2) {
+            slowerKanV = v2;
+            slowerKanX = x2;
+            fasterKanV = v1;
+            fasterKanX = x1;
+        } else {
+            slowerKanV = v1;
+            slowerKanX = x1;
+            fasterKanV = v2;
+            fasterKanX = x2;
+        }
+        
+        while (slowerKanX >= fasterKanX) {
+            if (slowerKanX == fasterKanX) {
+                System.out.println("YES");
+                return;
+            }
+            slowerKanX += slowerKanV;
+            fasterKanX += fasterKanV;
+        }
+
+        System.out.println("NO");
+        return;
+    }
+}
